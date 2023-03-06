@@ -29,30 +29,25 @@ export const Header =()=>{
     return(
         <div className='headerDesign'>
             <div>logo</div>
-            {/* <div>Medicos</div>
+            <div>Medicos</div>
             <div>Servicios de salud</div>
             <div>Dental</div>
             <div>Mayores</div>
             <div>telefono</div>
-            <div>login</div> */}
             <div className='headerLinksDesign'>
                 {/* Introducimos el logo, independientemente de lo que nos vaya a sacar después */}
-
                 {/* Renderizado condicional por si el usuario es admin y hay que mostrar la sección de Admin */}
                 {datosReduxUsuario.userPass.user.rol === "admin" &&
 
                     <div onClick={() => navigate("/admin")} className='linkDesign'>admin</div>
 
                 }
-
+                
                 {/* Renderizado condicional por si el usuario sí está logeado... */}
                 {datosReduxUsuario.userPass.token !== "" ?
 
                     (<>
                         <div onClick={() => navigate("/profile")} className='linkDesign' >{datosReduxUsuario.userPass.user.first_name}</div>
-                        {/* Para hacer logout, emitimos la accion logout desde el dispatch, dando como valor
-    a userPass del estado de Redux el contenido de initial, es decir...lo reiniciamos o vaciamos,
-    al no tener token ni datos de usuario, dejaremos de estar logeados */}
                         <div className='linkDesign' onClick={() => logOff()}>logout</div>
                     </>)
 

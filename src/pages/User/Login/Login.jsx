@@ -60,6 +60,7 @@ export const Login = () => {
         postLogin(credenciales)
             .then(
                 resultado => {
+                    //console.log(resultado)
                     //Una vez decodificado, guardaría los datos de usuario y el token,
                     //ambas cosas en REDUX, para usarlas cuando yo quiera
                     let userPass = {
@@ -75,7 +76,7 @@ export const Login = () => {
                     },750);
                 }
             )
-            .catch(error => console.log(error));
+            .catch(error => console.log("aqui entra",error));
     }
 
     useEffect(()=>{
