@@ -29,7 +29,7 @@ export const Header =()=>{
     return(
         <div className='headerDesign'>
             <div>logo</div>
-            <div>Medicos</div>
+            <div onClick={() => navigate("/doctors")} className='linkDesign'>Medicos</div>
             <div>Servicios de salud</div>
             <div>Dental</div>
             <div>Mayores</div>
