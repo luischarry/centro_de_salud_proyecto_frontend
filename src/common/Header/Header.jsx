@@ -44,7 +44,7 @@ export const Header =()=>{
                 }
                 
                 {/* Renderizado condicional por si el usuario sí está logeado... */}
-                {datosReduxUsuario.userPass.token !== "" ?
+            {datosReduxUsuario.userPass.token !== "" ?
 
                     (<>
                         <div onClick={() => navigate("/profile")} className='linkDesign' >{datosReduxUsuario.userPass.user.first_name}</div>

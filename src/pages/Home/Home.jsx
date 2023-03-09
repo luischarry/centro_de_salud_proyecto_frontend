@@ -15,11 +15,11 @@ export const Home = () => {
             <div>
                 <div><h1>SEGURO MEDICO</h1></div>
                 <div>
-                <div onClick={() => navigate("/appointment")} className='linkDesign'>pide tu cita</div>
+                <div onClick={() => navigate("/doctors")} className='linkDesign'>pide tu cita</div>
                     <div>llamanos 9958874</div>
                 </div>
             </div>
         </div>
-        
+
     )
 }
