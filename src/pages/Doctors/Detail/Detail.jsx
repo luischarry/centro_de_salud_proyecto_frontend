@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import { userData } from '../../User/userSlice';
 import { doctorData, select } from '../doctorSlice';
 import { useSelector } from "react-redux";
@@ -20,6 +21,7 @@ export const Detail = () => {
     const [showDateTime, setShowDateTime] = useState(false);
     const [message, setMessage] = useState('');
 
+    const navigate = useNavigate();
     const userRDX = useSelector(userData);
     const doctorRDX = useSelector(doctorData);
 
@@ -92,12 +94,12 @@ export const Detail = () => {
                 inputProps={{ placeholder: 'Seleccione la hora' }}
                 timeConstraints={{ hours: { min: 9, max: 17, step: 1 }, minutes: { step: 60 } }}
             />
-            <button onClick={handleShowDateTime}>Mostrar Fecha y Hora</button>
+            <button onClick={handleShowDateTime}>confirmar</button>
             {showDateTime && (
                 <div>
                     <p>Fecha seleccionada: {moment(date).format('DD/MM/YYYY')}</p>
                     <p>Hora seleccionada: {moment(time).format('hh:mm A')}</p>
-                    <button onClick={sendDateTimeToAPI}>Confirmar</button>
+                    <button onClick={sendDateTimeToAPI}>Guardar</button>
                 </div>
 
             )}

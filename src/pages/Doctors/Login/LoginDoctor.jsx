@@ -1,48 +1,36 @@
 import React, { useState, useEffect } from 'react';
-
 import { useNavigate } from 'react-router-dom';
 import { InputText } from '../../../common/InputText/InputText';
-import { postLogin } from '../../../services/apiCalls';
+import { postLoginDoctor } from '../../../services/apiCalls';
 import { errorCheck } from '../../../services/utiles';
-
-//RDX imports......
 import { useSelector, useDispatch } from "react-redux";
-import { userData, login } from '../userSlice';
+import { userData, login } from '../../User/userSlice';
 
-import './Login.css';
-
-export const Login = () => {
+export const DoctorLogin = () => {
 
     //Instancia de métodos de Redux
     const dispatch = useDispatch();
-
-    const datosReduxUsuario = useSelector(userData);
-
+    const datosReduxDoctor = useSelector(userData);
     //Hooks
     const [credenciales, setCredenciales] = useState({
         email: '',
         password: ''
     })
-
     const [credencialesError, setErrorCredenciales] = useState({
         emailError: '',
         passwordError: ''
     })
-
-    //Variables y constantes
     const navigate = useNavigate();
 
-    //Handlers
     const InputHandler = (e) => {
-        
+
         //Bindear (atar)
-        setCredenciales((prevState)=>({...prevState, 
-            [e.target.name] : e.target.value
-            
+        setCredenciales((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+
         }));;
     }
-
-    //Funciones
     const Logeame = () => {
 
         //Check para saber si tenemos un error.......
@@ -50,41 +38,38 @@ export const Login = () => {
         //Este for in va a recorrer el objeto de js en busqueda de que una sola de sus propiedades
         //tenga un valor distinto de comillas vacias, es decir, haya un error presente
         for (const property in credencialesError) {
-           if(credencialesError[property] !== ''){
+            if (credencialesError[property] !== '') {
                 return;
-           }
+            }
         }
-          
-
         //Desde aqui llamamos al servicio....
-        postLogin(credenciales)
+        postLoginDoctor(credenciales)
             .then(
                 resultado => {
-                    //console.log(resultado)
                     //Una vez decodificado, guardaría los datos de usuario y el token,
                     //ambas cosas en REDUX, para usarlas cuando yo quiera
-                    let userPass = {
-                        token : resultado.data.token,
-                        user: resultado.data.user
+                    let doctorPass = {
+                        token: resultado.data.token,
+                        user: resultado.data.doctor
                     }
                     //Finalmente, guardo en RDX....
                     //Guardo mediante la ACCIÓN login, los datos del token y del token decodificado (datos de usuario)
-                    dispatch(login({userPass: userPass}));
+                    dispatch(login({ userPass: doctorPass }));
                     //Finalmente, navego y te llevo a home en casi un segundo de delay
-                    setTimeout(()=>{
-                        navigate("/")
-                    },750);
+                    setTimeout(() => {
+                        navigate("/doctorprofile")
+                    }, 750);
                 }
             )
-            .catch(error => console.log("aqui entra",error));
+            .catch(error => console.log("aqui entra", error));
     }
 
+
     useEffect(()=>{
-        if(datosReduxUsuario.userPass.token !== ''){
+        if(datosReduxDoctor.userPass.token !== ''){
             navigate("/");
         }
     },[])
-
     const loginErrorHandler = (e) => {
         
         let error = '';
@@ -100,7 +85,6 @@ export const Login = () => {
 
     return (
         <div className='loginDesign'>
-            {/* <pre>{JSON.stringify(credenciales, null, 2)}</pre> */}
             <InputText 
                 type={"email"} 
                 name={"email"}
@@ -122,7 +106,7 @@ export const Login = () => {
             <div className='errorText'>{credencialesError.passwordError}</div>
 
             <div className='loginButtonDesign' onClick={()=>Logeame()}>LOGIN</div>
-            <div onClick={() => navigate("/doctorlogin")} className='linkDesign'>si eres doctor</div>
+            
         </div>
     );
-};
+}

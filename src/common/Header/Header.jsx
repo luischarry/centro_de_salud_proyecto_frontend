@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { userData, logout } from "../../pages/User/userSlice";
 
 
-export const Header =()=>{
+export const Header = () => {
     //Al instanciar dispatch, lo podré usar para emitir ACCIONES de REDUX
     const dispatch = useDispatch();
     //Initial es un objeto de JavaScript que es igual que el estado de redux por defecto, 
@@ -26,40 +26,49 @@ export const Header =()=>{
 
         navigate("/")
     }
-    return(
+    return (
         <div className='headerDesign'>
             <div>logo</div>
-            <div onClick={() => navigate("/doctors")} className='linkDesign'>Medicos</div>
-            <div>Servicios de salud</div>
-            <div>Dental</div>
-            <div>Mayores</div>
-            <div>telefono</div>
+
             <div className='headerLinksDesign'>
-                {/* Introducimos el logo, independientemente de lo que nos vaya a sacar después */}
-                {/* Renderizado condicional por si el usuario es admin y hay que mostrar la sección de Admin */}
+                
+                {datosReduxUsuario.userPass.user.rol === "doctor" &&
+
+
+                    <>
+                        <div onClick={() => navigate("/doctorprofile")} className='linkDesign'>doctor</div>
+                        <div className='linkDesign' onClick={() => logOff()}>logout</div>
+                    </>
+                }
                 {datosReduxUsuario.userPass.user.rol === "admin" &&
 
-                    <div onClick={() => navigate("/admin")} className='linkDesign'>admin</div>
 
+                    <>
+                        <div onClick={() => navigate("/admin")} className='linkDesign'>admin</div>
+                        <div className='linkDesign' onClick={() => logOff()}>logout</div>
+                    </>
                 }
-                
-                {/* Renderizado condicional por si el usuario sí está logeado... */}
-            {datosReduxUsuario.userPass.token !== "" ?
 
-                    (<>
+                {/* Renderizado condicional por si el usuario sí está logeado... */}
+                {datosReduxUsuario.userPass.user.rol === "user" &&
+
+                    <>
+                        <div onClick={() => navigate("/doctors")} className='linkDesign'>Medicos</div>
                         <div onClick={() => navigate("/profile")} className='linkDesign' >{datosReduxUsuario.userPass.user.first_name}</div>
                         <div className='linkDesign' onClick={() => logOff()}>logout</div>
-                    </>)
-
-
-                    : (//Entraremos en el else si el token que hay en Redux está vacio (comillas vacias.)....
-                        //La primera vez que entramos en la aplicación, siempre entrará aquí por defecto
-
-                        <>
-                            <div className='linkDesign' onClick={() => setTimeout(() => { navigate("/login") }, 200)}>login</div>
-                            <div className='linkDesign' onClick={() => setTimeout(() => { navigate("/register") }, 200)}>register</div>
-                        </>
-                    )
+                    </>
+                }
+                
+                {datosReduxUsuario.userPass.token === "" &&
+                    <>
+                        <div>Servicios de salud</div>
+                        <div onClick={() => navigate("/doctors")} className='linkDesign'>Medicos</div>
+                        <div>Dental</div>
+                        <div>Mayores</div>
+                        <div>telefono</div>
+                        <div className='linkDesign' onClick={() => setTimeout(() => { navigate("/login") }, 200)}>login</div>
+                        <div className='linkDesign' onClick={() => setTimeout(() => { navigate("/register") }, 200)}>register</div>
+                    </>
                 }
 
             </div>

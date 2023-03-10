@@ -44,7 +44,7 @@ export const errorCheck = (name, value) => {
                 return "";
             }
         case 'password':
-            if (value.length < 8) {
+            if (value.length < 5) {
                 return "Write 8 characters at least"
             } else {
 

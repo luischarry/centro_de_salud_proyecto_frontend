@@ -55,7 +55,7 @@ export const Profile = () => {
                     appointment=>{
                         return (
                             <div key={appointment._id} >
-                                <div>hora de la cita {appointment.appointment_date}</div>
+                                <div>fecha de la cita {appointment.date} {appointment.time}</div>
                                 <div>doctor {appointment.doctorId.name}</div>
                             </div>
                         )
