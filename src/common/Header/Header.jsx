@@ -1,35 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
-//primero importo métodos que me permitirán conectarme para leer y modificar en redux
 import { useSelector, useDispatch } from "react-redux";
-//a continuación, importo los datos del estado de la slice de user (userData) y la ACCION logout
 import { userData, logout } from "../../pages/User/userSlice";
 
 
 export const Header = () => {
-    //Al instanciar dispatch, lo podré usar para emitir ACCIONES de REDUX
     const dispatch = useDispatch();
-    //Initial es un objeto de JavaScript que es igual que el estado de redux por defecto, 
-    //para pasárselo luego cuando haga el logout
     const initial = {
         token: '',
         user: {}
     }
-    //Guardo en la constante datosReduxUsuario, los datos que me traigo del state de redux (userData)
     const datosReduxUsuario = useSelector(userData);
-    //Instanciamos el método useNavigate para poder utilizarlo
     const navigate = useNavigate();
 
+    function handleLogoClick() {
+        navigate('/');
+      }
     const logOff = () => {
         dispatch(logout({ userPass: initial }))
-
         navigate("/")
     }
     return (
         <div className='headerDesign'>
-            <div>logo</div>
-
+            <div onClick={handleLogoClick}  className='logoDesignHeader'>
+             <img className='cameraAvatar' src="../../../../Images/logo.png" alt="Santa clarita" />   
+            </div>
+            
             <div className='headerLinksDesign'>
                 
                 {datosReduxUsuario.userPass.user.rol === "doctor" &&

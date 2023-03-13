@@ -5,6 +5,7 @@ import { postLoginDoctor } from '../../../services/apiCalls';
 import { errorCheck } from '../../../services/utiles';
 import { useSelector, useDispatch } from "react-redux";
 import { userData, login } from '../../User/userSlice';
+import './LoginDoctor.css';
 
 export const DoctorLogin = () => {
 
