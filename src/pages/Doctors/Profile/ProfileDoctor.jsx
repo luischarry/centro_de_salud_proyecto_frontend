@@ -19,7 +19,6 @@ export const DoctorProfile = () => {
         if (allAppointments.length === 0) {
             AppointmentsToday(userRDX.userPass.token, userRDX.userPass.user._id)
                 .then(resultado => {
-                    console.log(resultado.data)
                     setAllAppointments(resultado.data)
                 }).catch(error => console.log(error))
         }

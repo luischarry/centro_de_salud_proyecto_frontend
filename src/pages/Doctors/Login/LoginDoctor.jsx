@@ -32,9 +32,6 @@ export const DoctorLogin = () => {
         }));;
     }
     const Logeame = () => {
-
-        //Check para saber si tenemos un error.......
-
         //Este for in va a recorrer el objeto de js en busqueda de que una sola de sus propiedades
         //tenga un valor distinto de comillas vacias, es decir, haya un error presente
         for (const property in credencialesError) {
@@ -42,7 +39,6 @@ export const DoctorLogin = () => {
                 return;
             }
         }
-        //Desde aqui llamamos al servicio....
         postLoginDoctor(credenciales)
             .then(
                 resultado => {

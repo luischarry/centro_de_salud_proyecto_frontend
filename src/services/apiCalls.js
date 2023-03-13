@@ -45,6 +45,18 @@ export const AllDoctors = async (token) => {
     }
     return await axios.get(`${root}doctor/alldoctors`, config);
 }
+export const setUsers = async (token) => {
+    let config = {
+        headers: { Authorization: `Bearer ${token}` }
+    }
+    return await axios.get(`${root}user/allUser`, config);
+}
+export const setDoctors = async (token) => {
+    let config = {
+        headers: { Authorization: `Bearer ${token}` }
+    }
+    return await axios.get(`${root}doctor/alldoctors`, config);
+}
 
 export const getCalendar = async (_id) => {
     let config = {
