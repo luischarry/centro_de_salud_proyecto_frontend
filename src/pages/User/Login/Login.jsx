@@ -24,6 +24,9 @@ export const Login = () => {
         emailError: '',
         passwordError: ''
     })
+    const [credencialesLogin, setCredencialesLogin]=useState({
+        loginError:''
+    })
 
     const navigate = useNavigate();
 
@@ -50,19 +53,32 @@ export const Login = () => {
         postLogin(credenciales)
             .then(
                 resultado => {
-                    let userPass = {
-                        token: resultado.data.token,
-                        user: resultado.data.user
+                    if (resultado.data === 'Incorrect user or password') {
+                        setCredencialesLogin((prevState) => ({
+                            ...prevState,
+                            loginError: 'Ha ocurrido un error al intentar iniciar sesión'
+                        }))
+                    } else {
+                        let userPass = {
+                            token: resultado.data.token,
+                            user: resultado.data.user
+                        }
+                        //Guardo mediante la ACCIÓN login, los datos del token y del token decodificado (datos de usuario)
+                        dispatch(login({ userPass: userPass }));
+                        //Finalmente, navego y te llevo a home en casi un segundo de delay
+                        setTimeout(() => {
+                            navigate("/")
+                        }, 750);
                     }
-                    //Guardo mediante la ACCIÓN login, los datos del token y del token decodificado (datos de usuario)
-                    dispatch(login({ userPass: userPass }));
-                    //Finalmente, navego y te llevo a home en casi un segundo de delay
-                    setTimeout(() => {
-                        navigate("/")
-                    }, 750);
+
                 }
             )
-            .catch(error => console.log(error));
+            .catch(error => {
+                setCredencialesLogin((prevState) => ({
+                    ...prevState,
+                    loginError: 'Ha ocurrido un error al intentar iniciar sesión'
+                }))
+            });
     }
 
     useEffect(() => {
@@ -96,7 +112,7 @@ export const Login = () => {
                         errorHandler={loginErrorHandler}
 
                     />
-                    {/* <div className='errorText'>{credencialesError.emailError}</div> */}
+                    <div className='errorText'>{credencialesError.emailError}</div>
                 </div>
                 <div className='user-box'>
                     <InputText
@@ -108,7 +124,7 @@ export const Login = () => {
                         errorHandler={loginErrorHandler}
                     />
                 </div>
-                {/* <div className='errorText'>{credencialesError.passwordError}</div> */}
+                <div className='errorText'>{credencialesError.passwordError}</div>
                 <a href="#">
                     <span></span>
                     <span></span>
@@ -116,9 +132,10 @@ export const Login = () => {
                     <span></span>
                     <div className='loginButtonDesign' onClick={() => Logeame()}>LOGIN</div>
                 </a>
+                <div className='errorText'>{credencialesLogin.loginError}</div>
             </form>
             <p>No tienes una cuenta? <a onClick={() => navigate("/register")} className="a2">Registrate!</a></p>
-            
+
             <div onClick={() => navigate("/doctorlogin")} className='linkDesign'>si eres doctor</div>
         </div>
     );

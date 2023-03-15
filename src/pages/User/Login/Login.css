@@ -84,3 +84,7 @@
   .linkDesign{
     cursor: pointer;
   }
+  .errorText{
+    color:red;
+    font-size:large;
+  }

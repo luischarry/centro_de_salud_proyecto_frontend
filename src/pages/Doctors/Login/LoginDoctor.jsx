@@ -9,10 +9,9 @@ import './LoginDoctor.css';
 
 export const DoctorLogin = () => {
 
-    //Instancia de métodos de Redux
     const dispatch = useDispatch();
     const datosReduxDoctor = useSelector(userData);
-    //Hooks
+
     const [credenciales, setCredenciales] = useState({
         email: '',
         password: ''
@@ -21,6 +20,10 @@ export const DoctorLogin = () => {
         emailError: '',
         passwordError: ''
     })
+    const [credencialesLogin, setCredencialesLogin]=useState({
+        loginError:''
+    })
+
     const navigate = useNavigate();
 
     const InputHandler = (e) => {
@@ -41,26 +44,36 @@ export const DoctorLogin = () => {
             }
         }
         postLoginDoctor(credenciales)
-            .then(
-                resultado => {
-                    //Una vez decodificado, guardaría los datos de usuario y el token,
-                    //ambas cosas en REDUX, para usarlas cuando yo quiera
-                    let doctorPass = {
+        .then(
+            resultado => {
+                console.log(resultado)
+                if (resultado.data === 'Incorrect user or password') {
+                    setCredencialesLogin((prevState) => ({
+                        ...prevState,
+                        loginError: 'Ha ocurrido un error al intentar iniciar sesión'
+                    }))
+                } else {
+                    let userPass = {
                         token: resultado.data.token,
-                        user: resultado.data.doctor
+                        user: resultado.data.user
                     }
-                    //Finalmente, guardo en RDX....
                     //Guardo mediante la ACCIÓN login, los datos del token y del token decodificado (datos de usuario)
-                    dispatch(login({ userPass: doctorPass }));
+                    dispatch(login({ userPass: userPass }));
                     //Finalmente, navego y te llevo a home en casi un segundo de delay
                     setTimeout(() => {
-                        navigate("/doctorprofile")
+                        navigate("/")
                     }, 750);
                 }
-            )
-            .catch(error => console.log("aqui entra", error));
-    }
 
+            }
+        )
+        .catch(error => {
+            setCredencialesLogin((prevState) => ({
+                ...prevState,
+                loginError: 'Ha ocurrido un error al intentar iniciar sesión'
+            }))
+        });
+    }
 
     useEffect(()=>{
         if(datosReduxDoctor.userPass.token !== ''){
@@ -70,9 +83,7 @@ export const DoctorLogin = () => {
     const loginErrorHandler = (e) => {
         
         let error = '';
-
         error = errorCheck(e.target.name, e.target.value);
-
 
         setErrorCredenciales((prevState)=>({...prevState, 
             [e.target.name + 'Error'] : error
@@ -81,29 +92,44 @@ export const DoctorLogin = () => {
 
 
     return (
-        <div className='loginDesign'>
-            <InputText 
-                type={"email"} 
-                name={"email"}
-                className={credencialesError.emailError === '' ? 'inputDesign' : 'inputDesign inputDesignError'} 
-                placeholder={"Escribe tu email"} 
-                functionHandler={InputHandler}
-                errorHandler={loginErrorHandler}
-            />
-            <div className='errorText'>{credencialesError.emailError}</div>
-
-            <InputText 
-                type={"password"} 
-                name={"password"}
-                className={credencialesError.passwordError === '' ? 'inputDesign' : 'inputDesign inputDesignError'} 
-                placeholder={"Escribe tu contraseña"} 
-                functionHandler={InputHandler}
-                errorHandler={loginErrorHandler}
-            />
-            <div className='errorText'>{credencialesError.passwordError}</div>
-
-            <div className='loginButtonDesign' onClick={()=>Logeame()}>LOGIN</div>
-            
-        </div>
+        <div className='login-box'>
+        <p>Login Doctor</p>
+        <form>
+            <div className='user-box'>
+                <InputText
+                    type={"email"}
+                    name={"email"}
+                    className={credencialesError.emailError === '' ? 'inputDesign' : 'inputDesign inputDesignError'}
+                    placeholder={"Escribe tu email"}
+                    functionHandler={InputHandler}
+                    errorHandler={loginErrorHandler}
+                />
+                <div className='errorText'>{credencialesError.emailError}</div>
+            </div>
+            <div className='user-box'>
+                <InputText
+                    type={"password"}
+                    name={"password"}
+                    className={credencialesError.passwordError === '' ? 'inputDesign' : 'inputDesign inputDesignError'}
+                    placeholder={"Escribe tu contraseña"}
+                    functionHandler={InputHandler}
+                    errorHandler={loginErrorHandler}
+                />
+               <div className='errorText'>{credencialesError.passwordError}</div>  
+            </div>
+           
+            <a href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <div className='loginButtonDesign' onClick={() => Logeame()}>LOGIN</div>
+            </a>
+            <div className='errorText'>{credencialesLogin.loginError}</div>
+        </form>
+        <p>Problemas para inciar sesion contacte con su administrador</p>
+        
+        <div onClick={() => navigate("/login")} className='linkDesign'><a className="a2">si eres usuario</a></div>
+    </div>
     );
 }

@@ -45,13 +45,13 @@ export const errorCheck = (name, value) => {
             }
         case 'password':
             if (value.length < 5) {
-                return "Write 8 characters at least"
+                return "La contraseña es demasiada corta"
             } else {
 
                 //Checking the password format....
 
                 if (! /[\d()+-]/g.test(value)) {
-                    return "Password en formato inválido";
+                    return "Contraseña en formato inválido";
                 } else {
                     return "";
                 }
