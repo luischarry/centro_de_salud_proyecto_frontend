@@ -1,0 +1,53 @@
+.cardprofile {
+    width: 400px;
+    height: 260px;
+    background: lightgrey;
+    position: relative;
+    border-radius: 15px;
+    border: solid;
+}
+
+.div1 {
+    display: block;
+    width: 400px;
+    height: 80px;
+    overflow: hidden;
+}
+
+.div1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+}
+
+.div2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 160px;
+    background: #1087ff;
+}
+
+.div2 h4 {
+    text-align: start;
+}
+
+.div2 p {
+    display: inline-block;
+    margin-right: 30px;
+}
+th {
+    padding: 10px;
+    border-bottom: 1px solid gray;
+}
+.btn-back{
+    margin-top: 23px;
+}
+.btn{
+    margin-left: 15px;
+}
+.pp{
+    display: flex;
+}

@@ -4,9 +4,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding-right: 20px;
+    
 }
-
+.logoDesignHeader{
+    width: 150px;
+    height: 60px;
+}
+.logoDesignHeader img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 .services {
     background-color: #f1f3f6;
     box-shadow: -5px -5px 10px #c8ccd4, 5px 5px 10px #ffffff;

@@ -1,0 +1,9 @@
+.cards {
+    display: flex;
+}
+
+@media screen and (max-width: 768px) {
+    .cards {
+        display: block;
+    }
+}

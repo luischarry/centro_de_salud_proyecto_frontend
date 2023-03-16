@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AllDoctors } from '../../../services/apiCalls'
 import { useSelector, useDispatch } from "react-redux";
+import { ButtonsBack } from '../../../common/Buttons/ButtonsBack';
+import { CardDoctor } from '../../../common/CardDoctor/CardDoctor';
 import { userData } from '../../User/userSlice';
 import { doctorData, select } from '../doctorSlice';
+import './AllDoctors.css';
 
 export const Doctors = () => {
 
@@ -40,19 +43,22 @@ export const Doctors = () => {
 
     }
     return (
-        <div>
-            <div>
+        <div>  
+            <div className='btn-back' onClick={() => navigate("/")}>
+                <ButtonsBack ></ButtonsBack>
+            </div>
+            <div className='cards'>
                 {allDoctors.length > 0 && allDoctors.map(
                     doctor => {
                         return (
+
                             <div key={doctor._id} onClick={() => Choosen(doctor._id)} className='linkDesign'>
-                                <div>dr {doctor.name}</div>
+                                <CardDoctor name={doctor.name} surname={doctor.surname} />
                             </div>
                         )
                     }
                 )}
             </div>
-            <div onClick={() => navigate("/")} className='linkDesign'>regresar</div>
         </div>
     )
 }

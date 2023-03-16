@@ -24,7 +24,7 @@ export const Header = () => {
     return (
         <div className='headerDesign'>
             <div onClick={handleLogoClick} className='logoDesignHeader'>
-                <img className='cameraAvatar' src="../../../../Images/logo.png" alt="Santa clarita" />
+            <img src="https://www.clinicasantaclarita.com/images/logo.png" alt="Santa clarita" />
             </div>
             <div class="services">
                 <div>Servicios de salud</div>
