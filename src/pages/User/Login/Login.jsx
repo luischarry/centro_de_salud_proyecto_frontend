@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { InputText } from '../../../common/InputText/InputText';
 import { postLogin } from '../../../services/apiCalls';
 import { errorCheck } from '../../../services/utiles';
-
 import { useSelector, useDispatch } from "react-redux";
 import { userData, login } from '../userSlice';
 
@@ -136,7 +135,7 @@ export const Login = () => {
             </form>
             <p>No tienes una cuenta? <a onClick={() => navigate("/register")} className="a2">Registrate!</a></p>
 
-            <div onClick={() => navigate("/doctorlogin")} className='linkDesign'>si eres doctor</div>
+            <div onClick={() => navigate("/doctorlogin")} className='linkDoctor'>si eres doctor</div>
         </div>
     );
 };

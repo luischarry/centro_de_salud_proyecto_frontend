@@ -12,7 +12,7 @@ export const errorCheck = (name, value) => {
         case 'surname':
         case 'second_surname':
             if (! /[a-z]/gi.test(value)) {
-                return ("Formato de texto inválido");
+                return ("*");
 
             } else {
                 return '';
@@ -27,19 +27,19 @@ export const errorCheck = (name, value) => {
 
         case 'phone':
             if (! /(?=.*?[0-9])/.test(value)) {
-                return "Teléfono incorrecto";
+                return "*";
             } else {
                 return "";
             }
         case 'dni':
             if (! /^[0-9]{8}[A-Za-z]$/.test(value)) {
-                return "El DNI introducido no es válido";
+                return "*";
             } else {
                 return "";
             }
         case 'cipa':
             if (! /(?=.*?[0-10])/.test(value)) {
-                return "Cipa incorrecto";
+                return "*";
             } else {
                 return "";
             }

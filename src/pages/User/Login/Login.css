@@ -22,7 +22,6 @@
     letter-spacing: 1px;
   }
   
- 
   
   .login-box .user-box input {
     width: 100%;
@@ -81,7 +80,7 @@
     color: #aaa;
     border-radius: 5px;
   }
-  .linkDesign{
+  .linkDoctor{
     cursor: pointer;
   }
   .errorText{

@@ -9,6 +9,7 @@ import 'react-calendar/dist/Calendar.css';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import moment from 'moment';
+import './Detail.css';
 
 function isWeekday(date) {
     const day = date.getDay();
@@ -79,30 +80,51 @@ export const Detail = () => {
 
     };
     return (
-        <div>
-            <h1>Calendario y Hora</h1>
-            <Calendar
-                onChange={handleDateChange}
-                value={date}
-                minDate={moment().add(1, 'day').toDate()}
-                tileDisabled={({ date }) => !isWeekday(date)}
-            />
-            <Datetime
-                value={time}
-                onChange={handleTimeChange}
-                dateFormat={false}
-                inputProps={{ placeholder: 'Seleccione la hora' }}
-                timeConstraints={{ hours: { min: 9, max: 17, step: 1 }, minutes: { step: 60 } }}
-            />
-            <button onClick={handleShowDateTime}>confirmar</button>
-            {showDateTime && (
-                <div>
-                    <p>Fecha seleccionada: {moment(date).format('DD/MM/YYYY')}</p>
-                    <p>Hora seleccionada: {moment(time).format('hh:mm A')}</p>
-                    <button onClick={sendDateTimeToAPI}>Guardar</button>
-                </div>
+        <div >
+            <div className='containerAppointments'>
+                <h1>Calendario y Hora</h1>
+            </div>
 
-            )}
+            <div className='calendar-box'>
+                <div className='calendar'>
+                    <Calendar
+                        onChange={handleDateChange}
+                        value={date}
+                        minDate={moment().add(1, 'day').toDate()}
+                        tileDisabled={({ date }) => !isWeekday(date)}
+                    />
+                </div>
+                <div className='datetime'>
+                    <div className='sendapp'>
+                        <Datetime
+                            value={time}
+                            onChange={handleTimeChange}
+                            dateFormat={false}
+                            inputProps={{ placeholder: 'Seleccione la hora' }}
+                            timeConstraints={{ hours: { min: 9, max: 17, step: 1 }, minutes: { step: 60 } }}
+                        />
+                    </div>
+
+                    <div className='calendar-box'>
+                        <button className='select' onClick={handleShowDateTime}><span className='text'>Confirmar</span><span className="icon"></span><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 32 32"><path d="M5 16.577l2.194-2.195 5.486 5.484L24.804 7.743 27 9.937l-14.32 14.32z"></path></svg></button>
+
+                        <button className='noselect' onClick={() => navigate("/")}><span className='text'>Cancelar</span><span className="icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.500 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button>
+                    </div>
+
+                    {showDateTime && (
+                        <div className='dateselect'>
+                            <p>Fecha seleccionada: {moment(date).format('DD/MM/YYYY')}</p>
+                            <p>Hora seleccionada: {moment(time).format('hh:mm A')}</p>
+                            <p>Medico: {doctorRDX.doctorPass.user.name} {doctorRDX.doctorPass.user.surname}</p>
+                            {console.log(doctorRDX.doctorPass.user.name)}
+                            <div className='sendapp'>
+                                <button onClick={sendDateTimeToAPI}>Guardar</button>
+                            </div>
+
+                        </div>
+                    )}
+                </div>
+            </div>
             <div>{message && <p>{message}</p>}</div>
         </div>
     )

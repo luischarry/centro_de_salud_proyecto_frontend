@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { userData } from '../../User/userSlice';
 import { AppointmentsToday } from '../../../services/apiCalls'
+import './ProfileDoctor.css'
 
 export const DoctorProfile = () => {
     const navigate = useNavigate();
