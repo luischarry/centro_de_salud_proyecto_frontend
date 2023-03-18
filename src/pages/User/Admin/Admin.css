@@ -1,0 +1,15 @@
+.admin{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10%;
+}
+
+.menuAdmin{
+    background-color: #f1f3f6;
+    box-shadow: 5px 5px 10px #c8ccd4, -5px -5px 10px #ffffff;
+}
+@media only screen and (max-width: 768px) {
+    .admin {
+      flex-direction: column;
+    }
+  }

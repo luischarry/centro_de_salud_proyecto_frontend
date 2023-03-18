@@ -34,7 +34,6 @@ export const Header = () => {
                 <div>telefono</div>
             </div>
             <div className='Links'>
-
                 {datosReduxUsuario.userPass.user.rol === "doctor" &&
                     <div className="services">
                         <div onClick={() => navigate("/doctorprofile")} className='Design'>doctor</div>
@@ -50,7 +49,6 @@ export const Header = () => {
 
                 {/* Renderizado condicional por si el usuario sí está logeado... */}
                 {datosReduxUsuario.userPass.user.rol === "user" &&
-
                     <div className="services">
                         <div onClick={() => navigate("/profile")} className='Design' >{datosReduxUsuario.userPass.user.first_name}</div>
                         <div className='Design' onClick={() => logOff()}>logout</div>

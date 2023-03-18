@@ -46,7 +46,6 @@ export const DoctorLogin = () => {
         postLoginDoctor(credenciales)
         .then(
             resultado => {
-                console.log(resultado)
                 if (resultado.data === 'Incorrect user or password') {
                     setCredencialesLogin((prevState) => ({
                         ...prevState,
@@ -55,8 +54,9 @@ export const DoctorLogin = () => {
                 } else {
                     let userPass = {
                         token: resultado.data.token,
-                        user: resultado.data.user
+                        user: resultado.data.doctor
                     }
+                    console.log(userPass)
                     //Guardo mediante la ACCIÓN login, los datos del token y del token decodificado (datos de usuario)
                     dispatch(login({ userPass: userPass }));
                     //Finalmente, navego y te llevo a home en casi un segundo de delay
@@ -129,7 +129,7 @@ export const DoctorLogin = () => {
         </form>
         <p>Problemas para inciar sesion contacte con su administrador</p>
         
-        <div onClick={() => navigate("/login")} className='linkDesign'><a className="a2">si eres usuario</a></div>
+        <div onClick={() => navigate("/login")} className='l'><a className="a2">Si eres usuario</a></div>
     </div>
     );
 }

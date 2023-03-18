@@ -5,6 +5,7 @@ import { userData } from '../../User/userSlice';
 import { setUsers } from '../../../services/apiCalls'
 import { setDoctors } from '../../../services/apiCalls'
 import UserTable from '../../../Components/Userstable';
+import './Admin.css'
 
 export const Admin = () => {
     const navigate = useNavigate();
@@ -35,11 +36,17 @@ export const Admin = () => {
             }).catch(error => console.log(error))
     };
     return (
-        <div>
-            <button onClick={handleGetAllUsers}>Obtener todos los usuarios</button>
-            {showTable && <UserTable users={allUsers} />}
-            <button onClick={handleGetAllDoctors}>Obtener todos los doctores</button>
-            {showTable && <UserTable users={allDoctors} />}
+        <div className='admin'>
+            <div className='menuAdmin'>
+                <h2>Todos los usuarios</h2><button onClick={handleGetAllUsers}>Usuarios</button>
+                {showTable && <UserTable users={allUsers} />}
+            </div>
+            <div className='menuAdmin'>
+                <h2>Todos los medicos</h2><button onClick={handleGetAllDoctors}>Doctores</button>
+                {showTable && <UserTable users={allDoctors} />}
+            </div>
+
+
         </div>
     )
 }

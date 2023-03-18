@@ -1,0 +1,8 @@
+.modal{
+    margin-top: 20px;
+    cursor: pointer;
+}
+.tabladmin{
+    background-color: aquamarine;
+    box-shadow: 5px 5px 10px #c8ccd4, -5px -5px 10px #ffffff;
+}
