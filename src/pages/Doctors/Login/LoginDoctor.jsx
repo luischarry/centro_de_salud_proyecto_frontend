@@ -100,7 +100,7 @@ export const DoctorLogin = () => {
                     type={"email"}
                     name={"email"}
                     className={credencialesError.emailError === '' ? 'inputDesign' : 'inputDesign inputDesignError'}
-                    placeholder={"Escribe tu email"}
+                    placeholder={"example@doctor.es"}
                     functionHandler={InputHandler}
                     errorHandler={loginErrorHandler}
                 />
@@ -111,7 +111,7 @@ export const DoctorLogin = () => {
                     type={"password"}
                     name={"password"}
                     className={credencialesError.passwordError === '' ? 'inputDesign' : 'inputDesign inputDesignError'}
-                    placeholder={"Escribe tu contraseña"}
+                    placeholder={"Password"}
                     functionHandler={InputHandler}
                     errorHandler={loginErrorHandler}
                 />
@@ -127,9 +127,9 @@ export const DoctorLogin = () => {
             </a>
             <div className='errorText'>{credencialesLogin.loginError}</div>
         </form>
-        <p>Problemas para inciar sesion contacte con su administrador</p>
+        <p>Problems to start session contact your administrator</p>
         
-        <div onClick={() => navigate("/login")} className='l'><a className="a2">Si eres usuario</a></div>
+        <div onClick={() => navigate("/login")} className='l'><a className="a2">Are you a user?</a></div>
     </div>
     );
 }

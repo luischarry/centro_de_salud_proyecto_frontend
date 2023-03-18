@@ -27,23 +27,22 @@ export const Header = () => {
             <img src="https://www.clinicasantaclarita.com/images/logo.png" alt="Santa clarita" />
             </div>
             <div className="services">
-                <div>Servicios de salud</div>
-                <div onClick={() => navigate("/doctors")} className='Design'>Medicos</div>
+                <div>Health services</div>
+                <div onClick={() => navigate("/doctors")} className='Design'>doctors</div>
                 <div>Dental</div>
-                <div>Mayores</div>
-                <div>telefono</div>
+                <div>phone</div>
             </div>
             <div className='Links'>
                 {datosReduxUsuario.userPass.user.rol === "doctor" &&
                     <div className="services">
-                        <div onClick={() => navigate("/doctorprofile")} className='Design'>doctor</div>
-                        <div className='Design' onClick={() => logOff()}>logout</div>
+                        <div onClick={() => navigate("/doctorprofile")} className='Design'>Doctor</div>
+                        <div className='Design' onClick={() => logOff()}>Logout</div>
                     </div>
                 }
                 {datosReduxUsuario.userPass.user.rol === "admin" &&
                     <div className="services">
-                        <div onClick={() => navigate("/admin")} className='Design'>admin</div>
-                        <div className='Design' onClick={() => logOff()}>logout</div>
+                        <div onClick={() => navigate("/admin")} className='Design'>Admin</div>
+                        <div className='Design' onClick={() => logOff()}>Logout</div>
                     </div>
                 }
 
@@ -51,7 +50,7 @@ export const Header = () => {
                 {datosReduxUsuario.userPass.user.rol === "user" &&
                     <div className="services">
                         <div onClick={() => navigate("/profile")} className='Design' >{datosReduxUsuario.userPass.user.first_name}</div>
-                        <div className='Design' onClick={() => logOff()}>logout</div>
+                        <div className='Design' onClick={() => logOff()}>Logout</div>
                     </div>
                 }
 

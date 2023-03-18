@@ -1,6 +1,7 @@
 .headerDesign {
     background-color: #f1f3f6;
     box-shadow: 5px 5px 10px #c8ccd4, -5px -5px 10px #ffffff;
+    font-size: larger;
     display: flex;
     justify-content: space-between;
     align-items: center;

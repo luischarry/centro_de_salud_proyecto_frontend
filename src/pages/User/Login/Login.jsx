@@ -55,7 +55,7 @@ export const Login = () => {
                     if (resultado.data === 'Incorrect user or password') {
                         setCredencialesLogin((prevState) => ({
                             ...prevState,
-                            loginError: 'Ha ocurrido un error al intentar iniciar sesión'
+                            loginError: 'An error occurred while trying to log in'
                         }))
                     } else {
                         let userPass = {
@@ -75,7 +75,7 @@ export const Login = () => {
             .catch(error => {
                 setCredencialesLogin((prevState) => ({
                     ...prevState,
-                    loginError: 'Ha ocurrido un error al intentar iniciar sesión'
+                    loginError: 'An error occurred while trying to log in'
                 }))
             });
     }
@@ -106,7 +106,7 @@ export const Login = () => {
                         type={"email"}
                         name={"email"}
                         className={credencialesError.emailError === '' ? 'inputDesign' : 'inputDesign inputDesignError'}
-                        placeholder={"Escribe tu email"}
+                        placeholder={"example@email.com"}
                         functionHandler={InputHandler}
                         errorHandler={loginErrorHandler}
 
@@ -118,7 +118,7 @@ export const Login = () => {
                         type={"password"}
                         name={"password"}
                         className={credencialesError.passwordError === '' ? 'inputDesign' : 'inputDesign inputDesignError'}
-                        placeholder={"Escribe tu contraseña"}
+                        placeholder={"Password"}
                         functionHandler={InputHandler}
                         errorHandler={loginErrorHandler}
                     />
@@ -133,9 +133,9 @@ export const Login = () => {
                 </a>
                 <div className='errorText'>{credencialesLogin.loginError}</div>
             </form>
-            <p>No tienes una cuenta? <a onClick={() => navigate("/register")} className="a2">Registrate!</a></p>
+            <p>You do not have an account? <a onClick={() => navigate("/register")} className="a2">Sign up!</a></p>
 
-            <div onClick={() => navigate("/doctorlogin")} className='linkDoctor'>si eres doctor</div>
+            <div onClick={() => navigate("/doctorlogin")} className='linkDoctor'>Doctor</div>
         </div>
     );
 };

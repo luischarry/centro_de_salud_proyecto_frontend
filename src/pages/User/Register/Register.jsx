@@ -67,7 +67,7 @@ export const Register = () => {
                 <ButtonsBack ></ButtonsBack>
             </div>
             <div className='container-form'>
-                <p>REGISTRO</p>
+                <p>SIGN UP</p>
                 <form>
                     <div className='register-box'>
                         <div className='errorText'>{userError.first_nameError}</div>
@@ -151,12 +151,11 @@ export const Register = () => {
                             type={'password'}
                             name={'password'}
                             className={userError.passwordError === '' ? 'inputDesign' : 'inputDesign inputDesignError'}
-                            placeholder={'pass'}
+                            placeholder={'password'}
                             functionHandler={registerInputHandler}
                             errorHandler={registerErrorHandler}
                         />
                         <div className='errorText'>{userError.passwordError}</div>
-
                     </div>
                     <div className='register-box'>
                         <button className='signupButtonDesign' onClick={() => singup()}>SignUp</button>

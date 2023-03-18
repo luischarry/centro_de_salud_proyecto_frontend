@@ -13,14 +13,11 @@ export const Home = () => {
     return (
         <div className='homeDesign'>
             <div className="container">
-
                 <div className="overlay">
-                    <h1>SEGURO MEDICO</h1>
-                    <div onClick={() => navigate("/doctors")} className="linkDesign">Pide tu cita</div>
-                    <p>llamanos 9958874</p>
+                    <h1>HEALTH INSURANCE</h1>
+                    <div onClick={() => navigate("/doctors")} className="linkDesign">make your appointment</div>
+                    <p>call us 9958874</p>
                 </div>
-
-
             </div>
         </div>
 

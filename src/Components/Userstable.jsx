@@ -10,8 +10,8 @@ const UserTable = ({ users }) => {
             <tr>
               <th>ID</th>
               <th>Email</th>
-              <th>Nombre</th>
-              <th>Apellido</th>
+              <th>Name</th>
+              <th>Surname</th>
             </tr>
           </thead>
           <tbody>

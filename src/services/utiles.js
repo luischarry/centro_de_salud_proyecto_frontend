@@ -20,7 +20,7 @@ export const errorCheck = (name, value) => {
 
         case 'email':
             if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(value)) {
-                return "Email en formato inválido";
+                return "Email in invalid format";
             } else {
                 return '';
             }
@@ -45,13 +45,13 @@ export const errorCheck = (name, value) => {
             }
         case 'password':
             if (value.length < 5) {
-                return "La contraseña es demasiada corta"
+                return "The password is too short"
             } else {
 
                 //Checking the password format....
 
                 if (! /[\d()+-]/g.test(value)) {
-                    return "Contraseña en formato inválido";
+                    return "Password in invalid format";
                 } else {
                     return "";
                 }

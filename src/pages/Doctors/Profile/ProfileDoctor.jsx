@@ -29,15 +29,15 @@ export const DoctorProfile = () => {
 
     return (
         <div>
-            <div><h1>Bienvenido Dr {userRDX.userPass.user.name} {userRDX.userPass.user.surname}</h1></div>
-            <div><h2>Estas son tus citas de hoy</h2></div>
+            <div><h1>Welcome dr {userRDX.userPass.user.name} {userRDX.userPass.user.surname}</h1></div>
+            <div><h2>These are today's patients.</h2></div>
             <table className='tableapp'>
                 <thead>
                     <tr>
-                        <th>Nombre del Paciente</th>
-                        <th>Hora de la Cita</th>
-                        <th>Telf del paciente</th>
-                        <th>Evaluado</th>
+                        <th>Name of patient</th>
+                        <th>Appointment time</th>
+                        <th>Patient phone</th>
+                        <th>Evaluated</th>
                     </tr>
                 </thead>
                 <tbody>
