@@ -60,3 +60,10 @@ export const getCalendar = async (_id) => {
     }
     return await axios.get(`${root}appointment/?doctorId=${_id}`, config);
 }
+
+export const deleteapp = async (token, _id) => {
+    let config = {
+        headers: { Authorization: `Bearer ${token}` }
+    }
+    return await axios.delete(`${root}appointment/${_id}`, config);
+}

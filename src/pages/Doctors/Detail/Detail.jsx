@@ -61,10 +61,7 @@ export const Detail = () => {
         postAppoinment(data, token)
             .then(
                 result => {
-                        setMessage(result.data);
-                        setTimeout(() => {
-                            navigate("/")
-                        }, 750);
+                        navigate("/")
                 }
             )
             .catch(setMessage('Appointment not created the doctor already has an appointment at that time'));
@@ -109,7 +106,7 @@ export const Detail = () => {
                             <div className='sendapp'>
                                 <button onClick={sendDateTimeToAPI}>accept</button>
                             </div>
-                            <div className='errorappoint'>{message && <p>{message}</p>}</div>
+                            <div className='errorappoint'>{message}</div>
                         </div>
                     )}
                 </div>

@@ -52,20 +52,20 @@ th {
     margin-left: 15px;
 }
 
-.pp {
+.profile {
     display: flex;
 }
 
 /* Estilos para pantallas pequeñas */
 @media (max-width: 767px) {
-    .pp {
+    .profile {
         flex-flow: wrap;
     }
 }
 
 /* Estilos para pantallas grandes */
 @media (min-width: 768px) {
-    .pp {
+    .profile {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
