@@ -24,7 +24,7 @@ Este proyecto es una aplicación web construida en ReactJS para un centro de sal
 ## Uso del proyecto 🚀
 Al inciar el proyecto estaran en la parte del Home.
 
-[![home-front.png](https://i.postimg.cc/0207QJrZ/home-front.png)](https://postimg.cc/MvXn3H7j)
+![home-front.png](./screenshot/home-front.png)
 
 Para logearse debera pulsar en login o al intentar pedir cita si no esta logeado lo redirige al login 
 

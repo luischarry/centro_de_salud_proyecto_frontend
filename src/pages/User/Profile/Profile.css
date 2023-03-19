@@ -38,16 +38,39 @@
     display: inline-block;
     margin-right: 30px;
 }
+
 th {
     padding: 10px;
     border-bottom: 1px solid gray;
 }
-.btn-back{
+
+.btn-back {
     margin-top: 23px;
 }
-.btn{
+
+.btn {
     margin-left: 15px;
 }
-.pp{
+
+.pp {
     display: flex;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 767px) {
+    .pp {
+        flex-flow: wrap;
+    }
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 768px) {
+    .pp {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .appointmentprofile {
+        width: calc(50% - 10px);
+    }
 }

@@ -15,7 +15,7 @@ export const Home = () => {
             <div className="container">
                 <div className="overlay">
                     <h1>HEALTH INSURANCE</h1>
-                    <div onClick={() => navigate("/doctors")} className="linkDesign">make your appointment</div>
+                    <div onClick={() => navigate("/doctors")} className="linkDesign">Request your appointment</div>
                     <p>call us 9958874</p>
                 </div>
             </div>

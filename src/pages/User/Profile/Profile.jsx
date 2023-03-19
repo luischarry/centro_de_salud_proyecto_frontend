@@ -58,7 +58,7 @@ export const Profile = () => {
                     </div>
                 </div>
 
-                <div>
+                <div className='appointmentprofile'>
                     <button className='btn' onClick={() => setShowAppointments(!showAppointments)}>Mostrar citas</button>
                     <div style={{ display: showAppointments ? 'block' : 'none' }}>
                         {allAppointments.length > 0 && (

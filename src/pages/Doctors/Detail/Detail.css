@@ -40,3 +40,10 @@
 .noselect:hover{
     background: #ff3636;
 }
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 767px) {
+    .calendar-box {
+        flex-direction: column;
+    }
+}

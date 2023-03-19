@@ -6,6 +6,15 @@ import { userData, logout } from "../../pages/User/userSlice";
 
 
 export const Header = () => {
+
+    const [isMenuVisible, setIsMenuVisible] = useState(false);
+    const handleMenuClick = () => {
+        setIsMenuVisible(!isMenuVisible);
+    };
+    const handleLabelClick = (e) => {
+        e.stopPropagation();
+      };
+
     const dispatch = useDispatch();
     const initial = {
         token: '',
@@ -24,9 +33,26 @@ export const Header = () => {
     return (
         <div className='headerDesign'>
             <div onClick={handleLogoClick} className='logoDesignHeader'>
-            <img src="https://www.clinicasantaclarita.com/images/logo.png" alt="Santa clarita" />
+                <img src="https://www.clinicasantaclarita.com/images/logo.png" alt="Santa clarita" />
             </div>
-            <div className="services">
+
+            <div className="containericon" onClick={handleMenuClick}>
+                <input className="label-check" id="label-check" type="checkbox" />
+                <label htmlFor="label-check" className="hamburger-label" onClick={handleLabelClick}>
+                    <div className="line1"></div>
+                    <div className="line2"></div>
+                    <div className="line3"></div>
+                </label>
+            </div>
+            {isMenuVisible &&
+                <div className='menucenter menucenter-active'>
+                    <div>Health services</div>
+                    <div onClick={() => navigate("/doctors")} className='Design'>doctors</div>
+                    <div>Dental</div>
+                    <div>phone</div>
+                </div>
+            }
+            <div className='menucenter'>
                 <div>Health services</div>
                 <div onClick={() => navigate("/doctors")} className='Design'>doctors</div>
                 <div>Dental</div>
