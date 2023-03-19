@@ -75,7 +75,7 @@ export const Profile = () => {
                                         <tr key={appointment._id}>
                                             <td>{appointment.date} </td>
                                             <td>{appointment.time}</td>
-                                            <td>{appointment.doctorId.name}</td>
+                                            <td>{appointment.doctorId.name} {appointment.doctorId.surname}</td>
                                         </tr>
                                     ))}
                                 </tbody>

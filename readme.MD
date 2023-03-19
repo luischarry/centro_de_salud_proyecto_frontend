@@ -26,10 +26,35 @@ Al inciar el proyecto estaran en la parte del Home.
 
 ![home-front.png](./screenshot/home-front.png)
 
+### Usuarios
+
 Para logearse debera pulsar en login o al intentar pedir cita si no esta logeado lo redirige al login 
 
 [![login-user.png](https://i.postimg.cc/x8qBCS33/login-user.png)](https://postimg.cc/305tSV6k)
 
+El usuario tambien podra registarse donde se pedira cirtos datos personales.
+
+![register.jpg](./screenshot/register.jpg)
+
 Una vez el usuario se pueda logear entrara a un perfil donde podra ver su tarjeta de servicio de salud y las citas medicas si a solicitado alguna.
 
-[![perfil-user-front.png](https://i.postimg.cc/xjtzVVZF/perfil-user-front.png)](https://postimg.cc/kDR4Wzqx)
+![perfil_user_front.png](./screenshot/perfil_user_front.png)
+
+Tambien podra elegir un medico con el cual tendra una cita medica.
+
+![alldoctors.jpg](./screenshot/alldoctors.jpg)
+
+Una vez sepa el medico con el cual quiere la cita medica se mostrara un calendario para seleccionar la fecha y la hora y el medico no tiene una cita a esa hora, dara un ok y regresara al home, y el usuario podra ver su cita en su perfil.
+
+![selected-date.jpg](./screenshot/selected-date.jpg)
+
+### Medicos
+
+Los medicos podran logearse igual que los usuarios. 
+
+![login-doctor](./screenshot/login-doctor.jpg)
+
+En su perfil podran ver las citas que tienen en el dia y dar un check a cada usuario. 
+
+![profile-doctor.jpg](./screenshot/profile-doctor.jpg)
+

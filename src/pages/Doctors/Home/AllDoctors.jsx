@@ -31,9 +31,9 @@ export const Doctors = () => {
         }
     }, [allDoctors])
 
-    const Choosen = (doctorId) => {
+    const Choosen = (doctor) => {
         //guardar en Redux el medico escogido
-        dispatch(select({ choosen: doctorId }))
+        dispatch(select({ choosen: doctor }))
 
         //se redirecciona para pedir la cita
 
@@ -52,7 +52,7 @@ export const Doctors = () => {
                     doctor => {
                         return (
 
-                            <div key={doctor._id} onClick={() => Choosen(doctor._id)} className='linkDesign'>
+                            <div key={doctor._id} onClick={() => Choosen(doctor)} className='linkDesign'>
                                 <CardDoctor name={doctor.name} surname={doctor.surname} />
                             </div>
                         )

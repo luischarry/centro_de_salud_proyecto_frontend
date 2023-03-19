@@ -25,7 +25,6 @@ export const Detail = () => {
     const navigate = useNavigate();
     const userRDX = useSelector(userData);
     const doctorRDX = useSelector(doctorData);
-
     const handleDateChange = (value) => {
         if (moment(value).isBefore(moment().startOf('day').add(1, 'day'))) {
             setDate(moment().add(1, 'day').startOf('day').toDate());
@@ -56,28 +55,19 @@ export const Detail = () => {
         const data = {
             date: moment(date).format('YYYY-MM-DD'),
             time: moment(time).format('HH:mm:ss'),
-            doctorId: doctorRDX.choosen,
+            doctorId: doctorRDX.choosen._id,
             userId: userRDX.userPass.user._id
         };
         postAppoinment(data, token)
             .then(
                 result => {
-                    console.log(result);
-                    if (typeof result.data === 'string') {
-                        console.log("aqui entra fallo");
                         setMessage(result.data);
-                    } else {
-                        setMessage('Cita creada correctamente');
-                        console.log("aqui entra bien");
                         setTimeout(() => {
                             navigate("/")
                         }, 750);
-                    }
-
                 }
             )
-            .catch(error => console.log(error));
-
+            .catch(setMessage('Appointment not created the doctor already has an appointment at that time'));
     };
     return (
         <div >
@@ -113,19 +103,18 @@ export const Detail = () => {
 
                     {showDateTime && (
                         <div className='dateselect'>
-                            <p>selected date: {moment(date).format('DD/MM/YYYY')}</p>
-                            <p>selected time: {moment(time).format('hh:mm A')}</p>
-                            <p>Doctor: {doctorRDX.doctorPass.user.name} {doctorRDX.doctorPass.user.surname}</p>
-                            {console.log(doctorRDX.doctorPass.user.name)}
+                            <p>Selected date: {moment(date).format('DD/MM/YYYY')}</p>
+                            <p>Selected time: {moment(time).format('hh:mm A')}</p>
+                            <p>Doctor: {doctorRDX.choosen.name} {doctorRDX.choosen.surname}</p>
                             <div className='sendapp'>
                                 <button onClick={sendDateTimeToAPI}>accept</button>
                             </div>
-
+                            <div className='errorappoint'>{message && <p>{message}</p>}</div>
                         </div>
                     )}
                 </div>
             </div>
-            <div>{message && <p>{message}</p>}</div>
+            
         </div>
     )
 }

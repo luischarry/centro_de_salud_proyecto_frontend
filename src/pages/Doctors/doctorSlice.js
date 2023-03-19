@@ -8,7 +8,6 @@ export const doctorSlice = createSlice({
     reducers: {
       select: (state, action) => {
         return {
-          
           ...state,
           ...action.payload
         }
