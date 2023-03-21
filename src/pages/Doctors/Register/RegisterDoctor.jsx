@@ -17,6 +17,7 @@ export const RegisterDoctor = () => {
         phone: '',
         password: '',
         email: '',
+        rol:'',
     })
 
     const [userError, setUserError] = useState({
@@ -47,7 +48,7 @@ export const RegisterDoctor = () => {
     }
     const singup = () => {
         //llamamos al servicio....
-        postRegisterDoctor(user,userRDX.userPass.token)
+        postRegisterDoctor(user)
             .then(
                 navigate("/")
             )
@@ -63,11 +64,10 @@ export const RegisterDoctor = () => {
                 <p>SIGN UP DOCTOR</p>
                 <form>
                     <div className='register-box'>
-                        <div className='errorText'>{userError.first_nameError}</div>
+                        <div className='errorText'>{userError.name}</div>
                         <InputText
                             type={'text'}
                             name={'name'}
-                            className={userError.first_nameError === '' ? 'inputDesign' : 'inputDesign inputDesignError'}
                             placeholder={'Name'} functionHandler={registerInputHandler}
                             errorHandler={registerErrorHandler}
                         />

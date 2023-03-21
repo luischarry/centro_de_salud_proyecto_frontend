@@ -8,6 +8,7 @@ export const Decoder = (token) => {
 export const errorCheck = (name, value) => {
     switch (name) {
         case 'first_name':
+        case 'name':
         case 'second_name':
         case 'surname':
         case 'second_surname':

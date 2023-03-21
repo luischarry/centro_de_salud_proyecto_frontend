@@ -42,6 +42,7 @@ export const DoctorProfile = () => {
                 </thead>
                 <tbody>
                     {allAppointments.length > 0 && allAppointments.map(appointment => {
+                        {console.log(appointment)}
                         return (
                             <tr key={appointment._id} className={checked[appointment._id] ? 'selected' : ''}>
                                 <td>{appointment.userId.first_name} {appointment.userId.second_name} {appointment.userId.surname} {appointment.userId.second_surname}</td>

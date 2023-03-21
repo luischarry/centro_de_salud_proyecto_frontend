@@ -48,6 +48,12 @@ export const setUsers = async (token) => {
     }
     return await axios.get(`${root}user/allUser`, config);
 }
+export const setAllpointments = async (token) => {
+    let config = {
+        headers: { Authorization: `Bearer ${token}` }
+    }
+    return await axios.get(`${root}appointment/admin`, config);
+}
 export const setDoctors = async (token) => {
     let config = {
         headers: { Authorization: `Bearer ${token}` }
@@ -68,10 +74,8 @@ export const deleteapp = async (token, _id) => {
     return await axios.delete(`${root}appointment/${_id}`, config);
 }
 
-export const postRegisterDoctor = async (userData,token) => {
-    let config = {
-        headers: { Authorization: `Bearer ${token}` }
-    }
-    return await axios.post(`${root}user/singup`, userData, config);
+export const postRegisterDoctor = async (userData) => {
+    console.log('postRegisterDoctor', userData);
+    return await axios.post(`${root}doctor/singup`, userData);
 
 }
