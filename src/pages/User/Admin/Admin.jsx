@@ -5,6 +5,7 @@ import { userData } from '../../User/userSlice';
 import { setUsers } from '../../../services/apiCalls'
 import { setDoctors } from '../../../services/apiCalls'
 import UserTable from '../../../Components/Userstable';
+import { RegisterDoctor } from '../../Doctors/Register/RegisterDoctor';
 import './Admin.css'
 
 export const Admin = () => {
@@ -36,17 +37,20 @@ export const Admin = () => {
             }).catch(error => console.log(error))
     };
     return (
-        <div className='admin'>
-            <div className='menuAdmin'>
-                <h2>Todos los usuarios</h2><button onClick={handleGetAllUsers}>Usuarios</button>
-                {showTable && <UserTable users={allUsers} />}
+        <div>
+            <div className='admin'>
+                <div className='menuAdmin'>
+                    <h2>Todos los usuarios</h2><button onClick={handleGetAllUsers}>Usuarios</button>
+                    {showTable && <UserTable users={allUsers} />}
+                </div>
+                <div className='menuAdmin'>
+                    <h2>Todos los medicos</h2><button onClick={handleGetAllDoctors}>Doctores</button>
+                    {showTable && <UserTable users={allDoctors} />}
+                </div>
             </div>
-            <div className='menuAdmin'>
-                <h2>Todos los medicos</h2><button onClick={handleGetAllDoctors}>Doctores</button>
-                {showTable && <UserTable users={allDoctors} />}
+            <div>
+            <button onClick={() => navigate("/registerdoctor")}>Registrar Doctores</button>
             </div>
-
-
         </div>
     )
 }

@@ -47,16 +47,16 @@ export const Header = () => {
             {isMenuVisible &&
                 <div className='menucenter menucenter-active'>
                     <div>Health services</div>
-                    <div onClick={() => navigate("/doctors")} className='Design'>doctors</div>
+                    <div onClick={() => navigate("/doctors")} className='Design'>Doctors</div>
                     <div>Dental</div>
-                    <div>phone</div>
+                    <div>Phone</div>
                 </div>
             }
             <div className='menucenter'>
                 <div>Health services</div>
-                <div onClick={() => navigate("/doctors")} className='Design'>doctors</div>
+                <div onClick={() => navigate("/doctors")} className='Design'>Doctors</div>
                 <div>Dental</div>
-                <div>phone</div>
+                <div>Phone</div>
             </div>
             <div className='Links'>
                 {datosReduxUsuario.userPass.user.rol === "doctor" &&
@@ -82,8 +82,8 @@ export const Header = () => {
 
                 {datosReduxUsuario.userPass.token === "" &&
                     <div className="services">
-                        <div className='Design' onClick={() => setTimeout(() => { navigate("/login") }, 200)}>login</div>
-                        <div className='Design' onClick={() => setTimeout(() => { navigate("/register") }, 200)}>register</div>
+                        <div className='Design' onClick={() => setTimeout(() => { navigate("/login") }, 200)}>Login</div>
+                        <div className='Design' onClick={() => setTimeout(() => { navigate("/register") }, 200)}>Register</div>
                     </div>
                 }
             </div>

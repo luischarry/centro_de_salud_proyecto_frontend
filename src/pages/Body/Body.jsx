@@ -9,6 +9,7 @@ import { Doctors } from '../Doctors/Home/AllDoctors';
 import { Register } from '../User/Register/Register';
 import { Admin } from '../User/Admin/Admin';
 import { Detail } from '../Doctors/Detail/Detail';
+import { RegisterDoctor } from '../Doctors/Register/RegisterDoctor';
 
 export const Body = () => {
 
@@ -22,6 +23,7 @@ export const Body = () => {
             <Route path="/doctorprofile" element={<DoctorProfile />}/>
             <Route path="/doctors" element={<Doctors />}/>
             <Route path="/detail" element={<Detail />}/>
+            <Route path="/registerdoctor" element={<RegisterDoctor />}/>
             <Route path="/admin" element={<Admin/>}/>
         </Routes>
     )

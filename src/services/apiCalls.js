@@ -67,3 +67,11 @@ export const deleteapp = async (token, _id) => {
     }
     return await axios.delete(`${root}appointment/${_id}`, config);
 }
+
+export const postRegisterDoctor = async (userData,token) => {
+    let config = {
+        headers: { Authorization: `Bearer ${token}` }
+    }
+    return await axios.post(`${root}user/singup`, userData, config);
+
+}
